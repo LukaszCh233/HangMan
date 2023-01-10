@@ -10,7 +10,6 @@ public class HangMan1 {
     public static char[] wword = word.toCharArray();
     public static int lifes = 0;
     public static char[] hw;
-
     public static void main(String[] args) {
 
         String hidenWord = "";
@@ -19,8 +18,7 @@ public class HangMan1 {
         }
         hw = hidenWord.toCharArray();
 
-
-        while (lifes < 7 && hidenWord.contains("*")) {
+        while (lifes < 7 && Arrays.toString(hw).contains("*")) {
 
             System.out.println("ENTER LETTER: ");
             char letter = scanner.next().charAt(0);
@@ -28,8 +26,6 @@ public class HangMan1 {
             System.out.println(hw);
         }
         scanner.close();
-
-
     }
     public static void game(char letter) {
 
@@ -43,11 +39,9 @@ public class HangMan1 {
         if (!LetterGuessed){
             lifes++;
             hangmanImage();
-
         }
-
         if (Arrays.equals(hw, wword)) {
-            System.out.println("You win");
+            System.out.println("YOU WIN, WORD: ");
         }
     }
     public static void hangmanImage() {
