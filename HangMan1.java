@@ -1,9 +1,7 @@
-import javax.security.sasl.SaslClient;
-import javax.swing.plaf.PanelUI;
+
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
-
 public class HangMan1 {
     public static Random random = new Random();
     public static Scanner scanner = new Scanner(System.in);
@@ -13,7 +11,6 @@ public class HangMan1 {
     public static int lifes = 0;
     public static char[] hw;
 
-
     public static void main(String[] args) {
 
         String hidenWord = "";
@@ -21,35 +18,36 @@ public class HangMan1 {
             hidenWord = hidenWord + "*";
         }
         hw = hidenWord.toCharArray();
-        System.out.println(hw);
+
 
         while (lifes < 7 && hidenWord.contains("*")) {
 
-            System.out.println("Podaj litere: ");
+            System.out.println("ENTER LETTER: ");
             char letter = scanner.next().charAt(0);
-
             game(letter);
             System.out.println(hw);
         }
+        scanner.close();
+
 
     }
-
-
     public static void game(char letter) {
 
-
+        boolean LetterGuessed = false;
         for (int i = 0; i < word.length(); i++) {
             if (wword[i] == letter) {
                 hw[i] = letter;
+                LetterGuessed = true;
             }
+        }
+        if (!LetterGuessed){
+            lifes++;
+            hangmanImage();
 
         }
-        
+
         if (Arrays.equals(hw, wword)) {
             System.out.println("You win");
-
-
-
         }
     }
     public static void hangmanImage() {
